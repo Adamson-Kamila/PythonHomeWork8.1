@@ -1,0 +1,26 @@
+# -*- coding: cp1251 -*-
+import yaml
+
+data = {
+    "items": ["computer", "printer", "keyboard", "mouse"],
+    "items_price": {
+        "computer": "200И-1000И",
+        "keyboard": "5И-50И",
+        "mouse": "4И-7И",
+        "printer": "100И-300И"
+    },
+    "items_quantity": 4
+}
+
+# —охран€ем данные в файл в формате YAML
+with open('file.yaml', 'w', encoding='utf-8') as file:
+    yaml.dump(data, file, default_flow_style=False, allow_unicode=True)
+
+# —читываем данные из файла и провер€ем, совпадают ли они с исходными
+with open('file.yaml', 'r', encoding='utf-8') as file:
+    loaded_data = yaml.safe_load(file)
+
+print(data == loaded_data)  # должно вывести True
+
+
+
